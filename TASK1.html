@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home { background-color: #f4f4f4; }
+        #about { background-color: #e2e2e2; }
+        #services { background-color: #d0d0d0; }
+        #contact { background-color: #bfbfbf; }
+
+        /* Navigation Menu Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        /* Hover Effect on Menu Items */
+        nav ul li a:hover {
+            background-color: #575757;
+            color: #ffd700;
+            border-radius: 5px;
+        }
+
+        /* Scrolled Navbar Background Change */
+        .scrolled {
+            background-color: #444;
+        }
+
+        /* Active Section Menu Link */
+        nav ul li a.active {
+            color: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Sections -->
+    <section id="home">
+        <h1>Welcome to Home</h1>
+        <p>This is the home section.</p>
+    </section>
+    <section id="about">
+        <h1>About Us</h1>
+        <p>This is the about section.</p>
+    </section>
+    <section id="services">
+        <h1>Our Services</h1>
+        <p>This is the services section.</p>
+    </section>
+    <section id="contact">
+        <h1>Contact Us</h1>
+        <p>This is the contact section.</p>
+    </section>
+
+    <script>
+        // Change navbar background color when scrolling
+        window.onscroll = function() {
+            var navbar = document.getElementById('navbar');
+            if (window.pageYOffset > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // Add active class to the current section's link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('nav ul li a').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
